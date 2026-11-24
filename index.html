@@ -1,196 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page d'apprentissage Bootstrap 6 – Loïc Bracale </title>
-
-  <!-- Bootstrap 6 (alpha) via CDN : CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Seulement 2 réglages perso : défilement fluide + marge sous la navbar collante -->
-  <style>
-    html { scroll-behavior: smooth; }
-    section[id] { scroll-margin-top: 4.5rem; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apprendre Bootstrap 5 - Guide Pratique</title>
+  <!-- Lien CDN CSS Bootstrap 5 -->
+  <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-light">
 
-  <!-- ============ HEADER : navigation ============ -->
-  <header class="sticky-top">
-    <nav class="navbar md:navbar-expand bg-1">
-      <div class="container">
-        <a class="navbar-brand" href="#accueil">Mon Bootstrap 6</a>
-
-        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navDrawer" aria-controls="navDrawer" aria-expanded="false" aria-label="Ouvrir le menu">
-          <span class="navbar-toggler-icon" aria-hidden="true"></span>
-        </button>
-
-        <dialog class="drawer drawer-end" tabindex="-1" id="navDrawer" aria-labelledby="navDrawerLabel">
-          <div class="drawer-header">
-            <h5 class="drawer-title" id="navDrawerLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Fermer"></button>
-          </div>
-          <div class="drawer-body">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#accueil">Accueil</a></li>
-              <li class="nav-item"><a class="nav-link" href="#bases">Les bases</a></li>
-              <li class="nav-item"><a class="nav-link" href="#composants">Composants</a></li>
-              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </dialog>
+  <!-- 1. BARRE DE NAVIGATION -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Bootstrap 5 Lab</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#grille">Système de Grille</a></li>
+          <li class="nav-item"><a class="nav-link" href="#composants">Composants</a></li>
+          <li class="nav-item"><a class="nav-link" href="#formulaire">Formulaires</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+  <!-- 2. EN-TÊTE (HERO SECTION) -->
+  <header class="bg-primary text-white text-center py-5 mb-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Apprendre Bootstrap 5</h1>
+      <p class="lead mb-4">Une page de référence pour maîtriser la grille responsive, les composants et les classes utilitaires.</p>
+      <a href="#grille" class="btn btn-light btn-lg fw-semibold">Commencer l'exploration</a>
+    </div>
   </header>
 
-  <!-- ============ MAIN ============ -->
-  <main>
+  <!-- CONTENU PRINCIPAL -->
+  <main class="container">
 
-    <!-- Accueil -->
-    <section id="accueil" class="py-5 text-center">
-      <div class="container">
-        <h1 class="mb-3">J'apprends Bootstrap 6</h1>
-        <p class="mb-4">Grille responsive, classes utilitaires, cards, formulaire et dialog.</p>
-        <a class="btn-solid theme-primary" href="#bases">Découvrir</a>
+    <!-- 3. SYSTÈME DE GRILLE (12 COLONNES) -->
+    <section id="grille" class="mb-5">
+      <h2 class="border-bottom pb-2 mb-4">1. Le Système de Grille (12 colonnes)</h2>
+      <p class="text-muted">Redimensionnez votre fenêtre pour observer l'adaptation automatique des colonnes (<code>.col-md-*</code>).</p>
+      
+      <div class="row g-3 text-center text-white mb-3">
+        <div class="col-md-4">
+          <div class="p-3 bg-secondary rounded">Colonne 1 (4/12)</div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 bg-secondary rounded">Colonne 2 (4/12)</div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 bg-secondary rounded">Colonne 3 (4/12)</div>
+        </div>
       </div>
-    </section>
 
-    <!-- Section 1 : 3 cards avec la grille (1 colonne → 2 → 3) -->
-    <section id="bases" class="py-5">
-      <div class="container">
-        <h2 class="mb-4">Les bases</h2>
-        <div class="row gy-4">
-
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/grille/600/360" class="card-img-top" alt="Photo illustrant la grille" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">La grille</h3>
-                <p class="card-text">12 colonnes. Ici : <code>col-12 md:col-6 lg:col-4</code>.</p>
-                <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#infoDialog">En savoir plus</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/utilitaires/600/360" class="card-img-top" alt="Photo illustrant les utilitaires" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">Les utilitaires</h3>
-                <p class="card-text">Marges, flex, couleurs : <code>py-5</code>, <code>d-flex</code>, <code>gap-3</code>.</p>
-                <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#infoDialog">En savoir plus</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/responsive/600/360" class="card-img-top" alt="Photo illustrant le responsive" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">Le responsive</h3>
-                <p class="card-text">Le préfixe vient avant la classe : <code>md:</code>, <code>lg:</code>.</p>
-                <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#infoDialog">En savoir plus</button>
-              </div>
-            </div>
-          </div>
-
+      <div class="row g-3 text-center text-white">
+        <div class="col-md-8">
+          <div class="p-3 bg-info rounded">Contenu principal (8/12)</div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 bg-dark rounded">Barre latérale (4/12)</div>
         </div>
       </div>
     </section>
 
-    <!-- Section 2 : 3 cards composants -->
-    <section id="composants" class="py-5">
-      <div class="container">
-        <h2 class="mb-4">Les composants</h2>
-        <div class="row gy-4">
+    <!-- 4. COMPOSANTS ESSENTIELS -->
+    <section id="composants" class="mb-5">
+      <h2 class="border-bottom pb-2 mb-4">2. Composants Essentiels</h2>
 
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/navbar/600/360" class="card-img-top" alt="Photo illustrant la navbar" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">Navbar + drawer</h3>
-                <p class="card-text">Sur mobile, le menu s'ouvre dans un drawer.</p>
-              </div>
-            </div>
+      <!-- Alertes & Boutons -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <h5>Alertes</h5>
+          <div class="alert alert-success" role="alert">
+            <strong>Succès !</strong> Votre code Bootstrap fonctionne correctement.
           </div>
-
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/cards/600/360" class="card-img-top" alt="Photo illustrant les cards" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">Cards</h3>
-                <p class="card-text">Image, titre, texte et bouton dans un même bloc.</p>
-              </div>
-            </div>
+          <div class="alert alert-warning" role="alert">
+            <strong>Attention :</strong> Pensez toujours à tester sur mobile.
           </div>
+        </div>
 
-          <div class="col-12 md:col-6 lg:col-4">
-            <div class="card h-100">
-              <img src="https://picsum.photos/seed/dialog/600/360" class="card-img-top" alt="Photo illustrant le dialog" width="600" height="360">
-              <div class="card-body">
-                <h3 class="card-title h5">Dialog</h3>
-                <p class="card-text">Remplace la modale de Bootstrap 5.</p>
-              </div>
-            </div>
+        <div class="col-md-6">
+          <h5>Boutons et Badges</h5>
+          <div class="mb-3">
+            <button class="btn btn-primary">Primaire</button>
+            <button class="btn btn-outline-secondary">Secondaire</button>
+            <button class="btn btn-danger">Danger</button>
           </div>
-
+          <div>
+            <span class="badge bg-primary">Nouveau</span>
+            <span class="badge rounded-pill bg-success">Validé</span>
+            <span class="badge bg-dark">v5.3</span>
+          </div>
         </div>
       </div>
+
+      <!-- Cartes (Cards) -->
+      <h5>Cartes (Cards)</h5>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Mobile-First</h5>
+              <p class="card-text">Bootstrap conçoit d'abord pour les petits écrans avant d'étendre l'affichage aux ordinateurs.</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+              <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exempleModal">Ouvrir une Modale</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Classes Utilitaires</h5>
+              <p class="card-text">Gérez les marges (<code>m-*</code>), espacements internes (<code>p-*</code>) et couleurs sans écrire de CSS.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Composants JS</h5>
+              <p class="card-text">Modales, carrousels et menus déroulants fonctionnent sans jQuery depuis la version 5.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FORMULAIRES -->
+    <section id="formulaire" class="mb-5">
+      <h2 class="border-bottom pb-2 mb-4">3. Exemple de Formulaire</h2>
+      <form class="bg-white p-4 rounded shadow-sm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="nom@exemple.fr">
+          </div>
+          <div class="col-md-6">
+            <label for="niveau" class="form-label">Niveau actuel</label>
+            <select class="form-select" id="niveau">
+              <option selected>Débutant</option>
+              <option>Intermédiaire</option>
+              <option>Avancé</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkAccord">
+              <label class="form-check-label" for="checkAccord">
+                J'ai compris la structure de base d'un formulaire Bootstrap.
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Envoyer le test</button>
+          </div>
+        </div>
+      </form>
     </section>
 
   </main>
 
-  <!-- ============ DIALOG (ancienne « modale ») ============ -->
-  <dialog class="dialog" id="infoDialog" aria-labelledby="infoDialogTitle">
-    <div class="dialog-header">
-      <h1 class="dialog-title h5" id="infoDialogTitle">En savoir plus</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Fermer"></button>
-    </div>
-    <div class="dialog-body">
-      <p>Cette fenêtre utilise l'élément natif <code>&lt;dialog&gt;</code>. Elle se ferme avec le bouton, la touche Échap ou un clic sur le fond.</p>
-    </div>
-    <div class="dialog-footer">
-      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Fermer</button>
-    </div>
-  </dialog>
-
-  <!-- ============ FOOTER : formulaire de contact ============ -->
-  <footer id="contact" class="py-5" data-bs-theme="dark">
-    <div class="bg-body">
-      <div class="container py-4">
-        <div class="row gy-4">
-
-          <div class="col-12 md:col-5">
-            <h2 class="h4">Contact</h2>
-            <p>Une question sur cette page ? Écrivez-moi.</p>
-            <p class="mb-0">© 2026 nom_eleve</p>
-          </div>
-
-          <div class="col-12 md:col-7">
-            <form action="#" method="post">
-              <div class="mb-3">
-                <label for="nom" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="nom" name="nom" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Adresse e-mail</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn-solid theme-primary">Envoyer le message</button>
-            </form>
-          </div>
-
+  <!-- MODALE D'EXEMPLE -->
+  <div class="modal fade" id="exempleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Fenêtre Modale Bootstrap</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          Ceci est une fenêtre modale interactive propulsée par le bundle JavaScript de Bootstrap 5.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- PIED DE PAGE -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0 small">Fichier de référence : <code>ref/bootstrap.html</code> — Propulsé par Bootstrap 5</p>
   </footer>
 
-  <!-- Bootstrap 6 JS : ESM uniquement, donc type="module" -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bundle JS Bootstrap 5 (inclut Popper) -->
+  <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
